@@ -1,0 +1,44 @@
+Folder PATH listing
+Volume serial number is 5649-AD1E
+C:.
+¦   tam_thoi.txt
+¦   
++---app
+¦   ¦   globals.css
+¦   ¦   layout.js
+¦   ¦   page.js
+¦   ¦   
+¦   +---(auth)
+¦   ¦   +---forgot-password
+¦   ¦   ¦       page.jsx
+¦   ¦   ¦       
+¦   ¦   +---login
+¦   ¦   ¦       page.jsx
+¦   ¦   ¦       
+¦   ¦   +---register
+¦   ¦           page.jsx
+¦   ¦           
+¦   +---about
+¦   ¦       page.jsx
+¦   ¦       
+¦   +---admin
+¦   ¦       page.jsx
+¦   ¦       
+¦   +---blog
+¦   ¦   ¦   page.jsx
+¦   ¦   ¦   tam_thoi.txt
+¦   ¦   ¦   
+¦   ¦   +---[slug]
+¦   ¦           page.jsx
+¦   ¦           
+¦   +---contact
+¦           page.jsx
+¦           
++---component
+¦   +---footer
+¦   ¦       Footer.jsx
+¦   ¦       
+¦   +---navbar
+¦           Navbar.jsx
+¦           
++---lib

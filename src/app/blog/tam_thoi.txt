@@ -1,0 +1,10 @@
+Folder PATH listing
+Volume serial number is 5649-AD1E
+C:.
+¦   layout.jsx
+¦   page.jsx
+¦   tam_thoi.txt
+¦   
++---[slug]
+        page.jsx
+        
