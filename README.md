@@ -1,5 +1,6 @@
 ### Dưới đây là cấu trúc thư mục của một dự án Next.js
 
+```markdown
 next-v14-full-stack
 ├── .next
 ├── node_modules
@@ -13,6 +14,7 @@ next-v14-full-stack
 │ └── page.js
 ├── jsconfig.json
 └── next.config.mjs
+```
 
 Mô tả chức năng của từng mục:
 
