@@ -1,9 +1,15 @@
-import React from 'react'
+import Link from "next/link";
+import Links from "./links/Links";
 
-const Navbar = () => {
+const Navbar = async () => {
   return (
-    <div>Navbar</div>
-  )
-}
+    <div>
+      <Link href="/">Logo</Link>
+      <div>
+        <Links />
+      </div>
+    </div>
+  );
+};
 
-export default Navbar
+export default Navbar;
