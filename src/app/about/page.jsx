@@ -6,9 +6,7 @@ export const metadata = {
   description: "About description",
 };
 
-
 const AboutPage = () => {
-
   // console.log("lets check where it works")
   return (
     <div className={styles.container}>
@@ -39,12 +37,7 @@ const AboutPage = () => {
         </div>
       </div>
       <div className={styles.imgContainer}>
-        <Image
-          src="/about.png"
-          alt="About Image"
-          fill
-          className={styles.img}
-        />
+        <Image src="/about.png" alt="About Image" fill className={styles.img} />
       </div>
     </div>
   );
