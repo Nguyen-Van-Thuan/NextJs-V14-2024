@@ -1,15 +1,10 @@
+import { getUser } from "@/lib/data";
 import styles from "./postUser.module.css";
 import Image from "next/image";
 
-// Dữ liệu tĩnh mẫu
-const sampleUser = {
-  img: "https://via.placeholder.com/50",
-  username: "SampleUser",
-};
-
-// // FETCH DATA WITH AN API
+// FETCH DATA WITH AN API
 // const getData = async (userId) => {
-//   const res = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`, { cache: "no-store" });
+//   const res = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}` ,{cache:"no-store"});
 
 //   if (!res.ok) {
 //     throw new Error("Something went wrong");
@@ -19,21 +14,18 @@ const sampleUser = {
 // };
 
 const PostUser = async ({ userId }) => {
-  // // FETCH DATA WITH AN API
+  // FETCH DATA WITH AN API
   // const user = await getData(userId);
 
   // FETCH DATA WITHOUT AN API
-  // const user = await getUser(userId);
-
-  // Sử dụng dữ liệu tĩnh
-  const user = sampleUser;
+  const user = await getUser(userId);
 
   return (
     <div className={styles.container}>
       <Image
         className={styles.avatar}
         src={user.img ? user.img : "/noavatar.png"}
-        alt="User Avatar"
+        alt=""
         width={50}
         height={50}
       />
