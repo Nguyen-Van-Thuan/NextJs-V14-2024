@@ -100,7 +100,7 @@ export const login = async (prevState, formData) => {
   const { username, password } = Object.fromEntries(formData);
 
   try {
-    await signIn("Credentials", { username, password });
+    await signIn("credentials", { username, password });
   } catch (err) {
     console.log(err);
 
