@@ -6,7 +6,7 @@ import PostUser from "@/component/postUser/postUser";
 
 // FETCH DATA WITH AN API
 const getData = async (slug) => {
-  const res = await fetch(`http://localhost:3000/api/blog/${slug}`);
+  const res = await fetch(`/api/blog/${slug}`);
 
   if (!res.ok) {
     throw new Error("Something went wrong");
