@@ -20,10 +20,12 @@ const AdminUsers = async () => {
             />
             <span>{user.username}</span>
           </div>
-          <form action={deleteUser}>
-            <input type="hidden" name="id" value={user.id} />
-            <button className={styles.userButton}>Delete</button>
-          </form>
+          {user.username !== "test" && (
+            <form action={deleteUser}>
+              <input type="hidden" name="id" value={user.id} />
+              <button className={styles.userButton}>Delete</button>
+            </form>
+          )}
         </div>
       ))}
     </div>
