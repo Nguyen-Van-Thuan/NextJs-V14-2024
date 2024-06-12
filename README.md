@@ -28,5 +28,5 @@ bun dev
 ### Open [https://next14-mongodb.vercel.app](https://next14-mongodb.vercel.app) with your browser to see the result.
 
 > ##### Login:
-> - UserName: Test
-> - Password: Test
+> - UserName: test
+> - Password: test
