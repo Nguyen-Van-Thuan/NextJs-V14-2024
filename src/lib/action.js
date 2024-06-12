@@ -1,9 +1,10 @@
 "use server";
 
+import bcrypt from "bcryptjs";
 import { revalidatePath } from "next/cache";
-import { Post } from "./models";
-import { connectToDb } from "./utils";
 import { signIn, signOut } from "./auth";
+import { Post, User } from "./models";
+import { connectToDb } from "./utils";
 
 // Định nghĩa hàm addPost để thêm một bài viết mới vào cơ sở dữ liệu
 export const addPost = async (formData) => {
@@ -57,7 +58,6 @@ export const handleLogout = async () => {
 
 
 // Hàm được gọi khi người dùng muốn đăng ký
-
 export const register = async (previousState, formData) => {
   const { username, email, password, img, passwordRepeat } =
     Object.fromEntries(formData);
@@ -92,5 +92,21 @@ export const register = async (previousState, formData) => {
   } catch (err) {
     console.log(err);
     return { error: "Something went wrong!" };
+  }
+};
+
+// Hàm được gọi khi người dùng muốn đăng nhập
+export const login = async (prevState, formData) => {
+  const { username, password } = Object.fromEntries(formData);
+
+  try {
+    await signIn("Credentials", { username, password });
+  } catch (err) {
+    console.log(err);
+
+    if (err.message.includes("CredentialsSignin")) {
+      return { error: "Invalid username or password" };
+    }
+    throw err;
   }
 };

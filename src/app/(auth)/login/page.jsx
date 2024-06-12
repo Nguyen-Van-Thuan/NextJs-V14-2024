@@ -1,12 +1,8 @@
 import LoginForm from "@/component/loginForm/loginForm";
 import { handleGithubLogin } from "@/lib/action";
-import { auth } from "@/lib/auth";
 import styles from "./login.module.css";
 
-const LoginPage = async () => {
-  const session = await auth();
-  console.log(session);
-
+const LoginPage = () => {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
