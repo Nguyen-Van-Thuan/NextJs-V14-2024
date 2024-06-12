@@ -1,51 +1,49 @@
 export const authConfig = {
   pages: {
-    signIn: "/login", // Đường dẫn đến trang đăng nhập
+    signIn: "/login",
   },
-  providers: [], // Danh sách các nhà cung cấp xác thực
+  providers: [],
   callbacks: {
-    // Callback JWT
+    // FOR MORE DETAIL ABOUT CALLBACK FUNCTIONS CHECK https://next-auth.js.org/configuration/callbacks
     async jwt({ token, user }) {
       if (user) {
-        // Thêm thông tin người dùng vào token
-        token.id = user.id; // ID của người dùng
-        token.isAdmin = user.isAdmin; // Trạng thái quản trị viên của người dùng
+        token.id = user.id;
+        token.isAdmin = user.isAdmin;
       }
       return token;
     },
-    // Callback Session
     async session({ session, token }) {
       if (token) {
-        // Thêm thông tin từ token vào session
-        session.user.id = token.id; // ID của người dùng
-        session.user.isAdmin = token.isAdmin; // Trạng thái quản trị viên của người dùng
+        session.user.id = token.id;
+        session.user.isAdmin = token.isAdmin;
       }
       return session;
     },
-    // Callback Authorized
     authorized({ auth, request }) {
-      const user = auth?.user; // Thông tin người dùng hiện tại
-      const isOnAdminPanel = request.nextUrl?.pathname.startsWith("/admin"); // Kiểm tra xem người dùng có trên bảng điều khiển admin không
-      const isOnBlogPage = request.nextUrl?.pathname.startsWith("/blog"); // Kiểm tra xem người dùng có trên trang Blog không
-      const isOnLoginPage = request.nextUrl?.pathname.startsWith("/login"); // Kiểm tra xem người dùng có trên trang Đăng nhập không
+      const user = auth?.user;
+      const isOnAdminPanel = request.nextUrl?.pathname.startsWith("/admin");
+      const isOnBlogPage = request.nextUrl?.pathname.startsWith("/blog");
+      const isOnLoginPage = request.nextUrl?.pathname.startsWith("/login");
 
-      // Chỉ quản trị viên mới được phép truy cập vào bảng điều khiển admin
+      // ONLY ADMIN CAN REACH THE ADMIN DASHBOARD
+
       if (isOnAdminPanel && !user?.isAdmin) {
         return false;
       }
 
-      // Chỉ người dùng đã đăng nhập mới được phép truy cập vào trang Blog
+      // ONLY AUTHENTICATED USERS CAN REACH THE BLOG PAGE
+
       if (isOnBlogPage && !user) {
         return false;
       }
 
-      // Chỉ những người dùng chưa đăng nhập mới được phép truy cập vào trang Đăng nhập
+      // ONLY UNAUTHENTICATED USERS CAN REACH THE LOGIN PAGE
+
       if (isOnLoginPage && user) {
         return Response.redirect(new URL("/", request.nextUrl));
       }
 
-      // Mặc định cho phép truy cập
-      return true;
+      return true
     },
   },
 };
